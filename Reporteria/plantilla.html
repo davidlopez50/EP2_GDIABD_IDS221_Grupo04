@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Informe Gerencial - GreenEnergy Analytics</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; color: #333; line-height: 1.6; }
+        h1 { color: #1a5490; border-bottom: 3px solid #1a5490; padding-bottom: 10px; }
+        h2 { color: #2c7bb6; margin-top: 30px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        h3 { color: #444; margin-top: 20px; }
+        .portada { text-align: center; margin-bottom: 40px; padding: 25px; background: #f0f7ff; border-radius: 8px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .kpi-card { background: #e8f5e9; padding: 15px; border-left: 4px solid #2e7d32; border-radius: 4px; }
+        .kpi-valor { font-size: 20px; font-weight: bold; color: #1b5e20; }
+        .kpi-label { font-size: 11px; color: #555; text-transform: uppercase; margin-bottom: 5px; }
+        .hallazgo { background: #f9f9f9; padding: 15px; border-left: 4px solid #ff9800; margin: 15px 0; border-radius: 4px; }
+        .limitacion { background: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; margin: 10px 0; border-radius: 4px; }
+        img { max-width: 100%; margin: 10px 0; border: 1px solid #eee; border-radius: 4px; }
+        .pie { font-size: 11px; color: #999; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="portada">
+    <h1>INFORME GERENCIAL - GREENENERGY ANALYTICS</h1>
+    <h2>Gestión Energética de Sedes (El Salvador)</h2>
+    <p><strong>Periodo:</strong> {{ periodo }}</p>
+    <p><strong>Fecha de generación:</strong> {{ fecha_generacion }}</p>
+</div>
+<h2>1. Resumen Ejecutivo</h2>
+<p>El presente informe analiza el desempeño energético de GreenEnergy Analytics en sus 9 sedes durante el periodo {{ periodo }}.</p>
+<h3>Indicadores Principales</h3>
+<div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Energía Generada Total</div><div class="kpi-valor">{{ "{:,.2f}".format(kpis.energia_total_kwh) }} kWh</div></div>
+    <div class="kpi-card"><div class="kpi-label">Demanda Total</div><div class="kpi-valor">{{ "{:,.2f}".format(kpis.demanda_total_kwh) }} kWh</div></div>
+    <div class="kpi-card"><div class="kpi-label">Déficit Energético Total</div><div class="kpi-valor">{{ "{:,.2f}".format(kpis.deficit_total_kwh) }} kWh</div></div>
+</div>
+<h2>2. Análisis Temporal</h2>
+<h3>2.1 Evolución de Generación vs Demanda</h3>
+<img src="{{ ruta_grafico }}" alt="Gráfico Operativo">
+<h2>3. Hallazgos Principales</h2>
+<div class="hallazgo">
+    <h3>1. Concentración de Déficit Operativo</h3>
+    <p><strong>Evidencia:</strong> Déficit total acumulado de {{ "{:,.2f}".format(kpis.deficit_total_kwh) }} kWh (Cobertura global: {{ "%.2f"|format(kpis.cobertura_pct) }}%).</p>
+    <p><strong>Interpretación:</strong> La región {{ region_top }} concentra los mayores requerimientos de energía externa según el ordenamiento por déficit.</p>
+</div>
+<h2>4. Recomendación</h2>
+<p><strong>Acción sugerida:</strong> Priorizar refuerzos de capacidad limpia en las sedes con mayor déficit identificado.</p>
+<h2>5. Limitación del Análisis</h2>
+<div class="limitacion"><p><strong>[!] Limitación:</strong> Los datos corresponden a 180 días de operación sintética y no incluyen imprevistos meteorológicos severos.</p></div>
+<div class="pie"><p>Pipeline de reportería automatizada - GreenEnergy Analytics</p></div>
+</body>
+</html>

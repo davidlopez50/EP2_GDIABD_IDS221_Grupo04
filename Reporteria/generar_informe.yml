@@ -1,0 +1,25 @@
+
+name: Generar Informe Automático
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Todos los lunes a las 8 AM
+  workflow_dispatch:
+
+jobs:
+  generar-informe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Instalar dependencias
+        run: pip install pandas matplotlib jinja2 weasyprint python-docx
+      - name: Generar informe
+        run: python scripts/generar_informe.py
+      - name: Subir artefactos
+        uses: actions/upload-artifact@v3
+        with:
+          name: informe-generado
+          path: exportaciones/

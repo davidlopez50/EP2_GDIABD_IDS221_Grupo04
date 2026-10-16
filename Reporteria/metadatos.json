@@ -1,0 +1,13 @@
+{
+  "fuente": "operacion_sedes.csv",
+  "registros_entrada": 1620,
+  "sha256_fuente": "9c28479ba39e4204b20bacdb23341e155ad1b9d8d517338906ae540b005520cb",
+  "fecha_generacion": "2026-10-16T01:54:07.312278",
+  "periodo": "01/01/2026 - 29/06/2026",
+  "kpis": {
+    "energia_total_kwh": 2913623.55,
+    "demanda_total_kwh": 3146866.67,
+    "deficit_total_kwh": 286904.2,
+    "cobertura_pct": 90.88
+  }
+}
